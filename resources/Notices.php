@@ -82,8 +82,8 @@ class Notices
      */
     public function setForms()
     {
-        if (class_exists('GFAPI')) {
-            $this->forms = GFAPI::get_forms();
+        if (class_exists('GFFormsModel')) {
+            $this->forms = GFFormsModel::get_forms();
         }
     }
 }
