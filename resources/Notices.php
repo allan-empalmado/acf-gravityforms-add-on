@@ -15,9 +15,6 @@ class Notices
 
     public function __construct()
     {
-        if (class_exists('GFFormsModel')) {
-            $this->forms = GFFormsModel::get_forms();
-        }
     }
 
     /**
@@ -25,6 +22,7 @@ class Notices
      */
     public function addHooks()
     {
+        add_action('admin_init', [$this, 'setForms']);
         add_action('admin_notices', [$this, 'isGravityFormsActive']);
         add_action('admin_notices', [$this, 'isAdvancedCustomFieldsActive']);
     }
@@ -77,5 +75,15 @@ class Notices
         $alt = $alt ? ' notice-alt' : '';
 
         echo '<div class="notice notice-warning ' . $inline . $alt . '"><p>' . $notice . '</p></div>';
+    }
+
+    /**
+     * Set the forms property
+     */
+    public function setForms()
+    {
+        if (class_exists('GFAPI')) {
+            $this->forms = GFAPI::get_forms();
+        }
     }
 }
