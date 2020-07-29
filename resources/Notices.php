@@ -2,7 +2,7 @@
 
 namespace ACFGravityformsField;
 
-use GFFormsModel;
+use GFAPI;
 
 class Notices
 {
@@ -15,8 +15,8 @@ class Notices
 
     public function __construct()
     {
-        if (class_exists('GFFormsModel')) {
-            $this->forms = GFFormsModel::get_forms();
+        if (class_exists('GFAPI')) {
+            $this->forms = GFAPI::get_forms();
         }
     }
 
@@ -42,9 +42,6 @@ class Notices
         }
     }
 
-    /**
-     * Check if there are any active gravityforms forms. If not, issue a notice
-     */
     public function hasActiveGravityForms($inline = '', $alt = '')
     {
         if (!$this->forms) {
@@ -56,7 +53,7 @@ class Notices
     }
 
     /**
-     * Check if advanced custom fields is active. If not, issue a notice
+     * Check if gravityforms is active. If not, issue a notice
      */
     public function isAdvancedCustomFieldsActive($inline = '', $alt = '')
     {

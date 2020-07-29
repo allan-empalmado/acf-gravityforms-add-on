@@ -21,7 +21,7 @@ class Init
     }
 
     /**
-     * Initialize the notices
+     * Initialize the notices :: Orig (private)
      */
     public function addNotices()
     {
